@@ -36,7 +36,7 @@ app.get("/", (req, res) => {
     success: true,
     data: {
       message: "Server is running",
-      author: "Md. Monir Hossain",
+      author: "Md. Rasel",
       version: "1.0.0",
       host: req.hostname,
       protocol: req.protocol,
