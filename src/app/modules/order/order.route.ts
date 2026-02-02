@@ -29,4 +29,25 @@ router.post(
   OrderController.createOrder,
 );
 
+// traack order status route can be added here
+router.get(
+  "/track/:id",
+  authMiddleware(UserRole.customer, UserRole.provider, UserRole.admin),
+  OrderController.trackOrderStatus,
+);
+
+// Customer cancels their own order
+router.patch(
+  "/cancel/:id",
+  authMiddleware(UserRole.customer),
+  OrderController.cancelOrder,
+);
+
+// get all orders - admin only
+router.get(
+  "/all/orders",
+  authMiddleware(UserRole.admin),
+  OrderController.getAllOrders,
+);
+
 export const OrderRoutes = router;

@@ -10,21 +10,25 @@ import sendResponse from "./shared/sendResponse";
 import { auth } from "./utils/auth";
 
 const app: Application = express();
-
+app.set("trust proxy", 1);
+app.use(express.json({ limit: "16kb" }));
+app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
+    origin: (origin, callback) => {
+      const allowed = process.env.FRONTEND_URL?.replace(/\/$/, "");
+      if (!origin || origin.replace(/\/$/, "") === allowed) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   }),
 );
-app.use(express.json({ limit: "16kb" }));
-app.use(express.urlencoded({ extended: true, limit: "16kb" }));
-
 app.use(logger);
 
-app.all("/api/auth/*splat", toNodeHandler(auth));
+app.all("/api/auth/*any", toNodeHandler(auth));
 app.get("/", (req, res) => {
   const ip = req.headers["x-forwarded-for"] || req.socket.remoteAddress;
   sendResponse(res, {

@@ -56,9 +56,49 @@ const updateOrderStatus = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+// Customer track their own order status
+const trackOrderStatus = catchAsync(async (req: Request, res: Response) => {
+  const orderId = req.params.id as string;
+  const userId = req.user?.id as string;
+  const result = await OrderService.trackOrderStatus(orderId, userId);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Order status tracked successfully",
+    data: result,
+  });
+});
+
+// Customer cancels their own order
+const cancelOrder = catchAsync(async (req: Request, res: Response) => {
+  const orderId = req.params.id as string;
+  const userId = req.user?.id as string;
+  const result = await OrderService.cancelOrder(orderId, userId);
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "Order cancelled successfully",
+    data: result,
+  });
+});
+
+// get all orders - admin only
+const getAllOrders = catchAsync(async (req: Request, res: Response) => {
+  const result = await OrderService.getAllOrders();
+  sendResponse(res, {
+    statusCode: StatusCodes.OK,
+    success: true,
+    message: "All orders retrieved successfully",
+    data: result,
+  });
+});
+
 export const OrderController = {
   createOrder,
   getMyOrders,
   getOrderById,
   updateOrderStatus,
+  trackOrderStatus,
+  cancelOrder,
+  getAllOrders,
 };
