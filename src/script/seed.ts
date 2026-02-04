@@ -18,7 +18,7 @@ const AdminCreateInitialData = async () => {
       return;
     }
     const adminUser = await fetch(
-      `${process.env.BETTER_AUTH_URL}/api/auth/sign-up/email`,
+      `http://localhost:8080/api/auth/sign-up/email`,
       {
         method: "POST",
         headers: {
