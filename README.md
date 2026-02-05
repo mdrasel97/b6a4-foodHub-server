@@ -1,6 +1,6 @@
-# 🚀 FoodHub Backend Server
+# 🚀 Khaddo Roshik Backend Server
 
-Backend API for FoodHub - A multi-vendor food delivery platform built with Node.js, Express, Prisma, and PostgreSQL.
+Backend API for Khaddo Roshik - A multi-vendor food delivery platform built with Node.js, Express, Prisma, and PostgreSQL.
 
 # Credentials for Testing
 
@@ -18,8 +18,8 @@ Backend API for FoodHub - A multi-vendor food delivery platform built with Node.
 
 # Live Demo
 
-- **Frontend:** [https://food-hub-client-eta.vercel.app](https://food-hub-client-eta.vercel.app)
-- **Backend API:** [https://assaignment-4-server.vercel.app](https://assaignment-4-server.vercel.app)
+- **Frontend:** [https://foodhub-client-silk.vercel.app/](https://github.com/mdrasel97/foodHub-client)
+- **Backend API:** [https://foodhub-server-flax.vercel.app/](https://github.com/mdrasel97/b6a4-foodHub-server)
 
 ## 🛠️ Tech Stack
 
@@ -100,7 +100,7 @@ PORT=8080
 BETTER_AUTH_SECRET=
 BETTER_AUTH_URL="http://localhost:8080"
 FRONTEND_URL="http://localhost:3000"
-DATABASE_URL="postgresql://user:password@localhost:5432/foodhub"
+DATABASE_URL="postgresql://user:password@localhost:5432"
 
 # email config
 EMAIL_HOST=smtp.gmail.com
@@ -267,8 +267,8 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Developer
 
-Developed by [Monir Hossain]
+Developed by [MD Rasel]
 
 ---
 
-**Note:** This is the backend API for the FoodHub project. See the frontend repository for the complete application.
+**Note:** This is the backend API for the Khaddo Roshik project. See the frontend repository for the complete application.
